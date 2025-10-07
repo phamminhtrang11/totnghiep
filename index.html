@@ -149,21 +149,23 @@
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: rgba(255, 255, 255, 0.8);
-    border: none;
+    background: rgba(0, 0, 0, 0.8);
+    color: #000;
+    border: 2px solid #fff;
     border-radius: 50%;
-    width: 50px;
-    height: 50px;
-    font-size: 22px;
+    width: 55px;
+    height: 55px;
+    font-size: 24px;
     cursor: pointer;
     z-index: 999;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.4);
     transition: all 0.3s ease;
   }
 
   #music-toggle:hover {
-    transform: scale(1.1);
-    background: rgba(255, 255, 255, 0.95);
+    transform: scale(1.15);
+    background: #000;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
   }
 </style>
 
@@ -172,21 +174,46 @@
   const toggleBtn = document.getElementById("music-toggle");
   let isPlaying = false;
 
-  function enableMusic() {
+  // Hàm bật nhạc
+  function playMusic() {
     audio.muted = false;
-    audio.currentTime = 2; // bỏ qua 2s đầu
+    audio.currentTime = 2;
     audio.play().then(() => {
       isPlaying = true;
       toggleBtn.textContent = "🔊";
-      console.log("Nhạc phát thành công");
-      window.removeEventListener("click", enableMusic);
-      window.removeEventListener("scroll", enableMusic);
-    }).catch(err => console.log("Bị chặn:", err));
+      console.log("🎵 Nhạc phát thành công!");
+      window.removeEventListener("scroll", playMusic);
+      window.removeEventListener("click", playMusic);
+    }).catch(err => console.log("⛔ Bị chặn:", err));
   }
 
-  // Khi click hoặc cuộn thì bật nhạc
-  window.addEventListener("click", enableMusic);
-  window.addEventListener("scroll", enableMusic);
+  // Cho phép phát khi người dùng tương tác
+  window.addEventListener("click", playMusic);
+
+  // ✅ Fix: Chrome chặn scroll đầu tiên, nên thêm delay 300ms
+  let hasScrolled = false;
+  window.addEventListener("scroll", () => {
+    if (!hasScrolled) {
+      hasScrolled = true;
+      setTimeout(playMusic, 300);
+    }
+  });
+
+  // Nút bật/tắt nhạc
+  toggleBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      audio.pause();
+      isPlaying = false;
+      toggleBtn.textContent = "🔇";
+    } else {
+      audio.muted = false;
+      audio.play().then(() => {
+        isPlaying = true;
+        toggleBtn.textContent = "🔊";
+      }).catch(err => console.log("Không phát được:", err));
+    }
+  });
+</script>
 
   // Xử lý khi bấm nút bật/tắt nhạc
   toggleBtn.addEventListener("click", () => {
