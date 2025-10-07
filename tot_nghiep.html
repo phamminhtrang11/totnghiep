@@ -1,0 +1,267 @@
+
+<!-- saved from url=(0193)https://hoangdst.github.io/graduation/?fbclid=IwY2xjawNRpBBleHRuA2FlbQIxMABicmlkETFZQ3k4RUZtZm9xaEhYekVYAR52ps29o-WTho6sOjQ__rEjFo8Z8Db62luJUXgre4SHIEluVIw92iUGjac8cw_aem_Zyc5DvtVSemavfufO0VHrg -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graduation Invitation -Bui Tran Hoang</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Great+Vibes&display=swap');
+
+   body {
+      font-family: 'Quicksand', sans-serif;
+      background: url(https://xdcs.cdnchinhphu.vn/446259493575335936/2025/8/22/bk-1755856140169844190839.jpg) no-repeat center center fixed;
+      background-size: cover;
+    }
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+
+    .content {
+      position: relative;
+      z-index: 1;
+      padding-bottom: 100px;
+    }
+    .bg-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.6); /* lớp trắng mờ */
+    z-index: 0;
+    }
+    .invitation-card {
+      max-width: 600px;
+      margin: 100px auto;
+      padding: 25px;
+      background: #fff;
+      color: #4a1a1a;
+      border-radius: 20px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.4);
+      text-align: center;
+      animation: fadeInUp 1.5s ease forwards;
+      opacity: 0;
+    }
+
+
+    @keyframes fadeInUp {
+      0% { transform: translateY(50px); opacity: 0; }
+      100% { transform: translateY(0); opacity: 1; }
+    }
+
+    .invitation-card img {
+      width: 100%;
+      border-radius: 5px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+      transition: transform 0.5s ease;
+    }
+
+    /* .invitation-card img:hover {
+      transform: scale(1.05);
+    } */
+
+    h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 46px;
+      margin-top: 50px;
+      color: #7b1111;
+      opacity: 0;
+      animation: fadeText 2s ease forwards 1s;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin: 10px 0;
+      color: #4a1a1a;
+      opacity: 0;
+      animation: fadeText 2s ease forwards 2s;
+    }
+
+    p {
+      font-size: 18px;
+      margin: 5px 0;
+    }
+
+    .details {
+      margin-top: 25px;
+      padding: 15px;
+      border-top: 2px solid #7b1111;
+      font-size: 17px;
+      opacity: 0;
+      animation: fadeText 2s ease forwards 3s;
+    }
+
+    .button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 12px 28px;
+      font-size: 18px;
+      color: white;
+      background: linear-gradient(45deg, #7b1111, #b85a1d);
+      border-radius: 30px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(123, 17, 17, 0.5);
+      opacity: 0;
+      animation: fadeText 2s ease forwards 4s;
+    }
+
+    .button:hover {
+      background: linear-gradient(45deg, #b85a1d, #7b1111);
+      transform: translateY(-3px);
+    }
+ 
+
+
+    @keyframes fadeText {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    footer {
+      text-align: center;
+      font-size: 14px;
+      color: #eee;
+      margin: 40px 0;
+      opacity: 0.8;
+      animation: fadeText 2s ease forwards 5s;
+    }
+  </style>
+</head>
+<body>
+     <div class="bg-overlay"></div>
+ <audio id="bg-music" autoplay="" loop="" muted="">
+  <source src="NHẠC GIAO HƯỞNG SỐ 1 VIÊT NAM - Nơi này có anh Symphony No 3  Wolfgang Amadeus Son Tung.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  function enableMusic() {
+    const audio = document.getElementById("bg-music");
+    audio.muted = false;
+    audio.currentTime = 3.5; // bỏ qua 2s đầu
+    audio.play().then(() => {
+      console.log("Nhạc phát thành công");
+      // chỉ remove nếu play thành công
+      window.removeEventListener("scroll", enableMusic);
+      window.removeEventListener("click", enableMusic);
+    }).catch(err => {
+      console.log("Trình duyệt chặn phát:", err);
+    });
+  }
+
+  window.addEventListener("scroll", enableMusic);
+  window.addEventListener("click", enableMusic);
+</script>
+
+  <canvas id="fireworks" width="1440" height="765"></canvas>
+
+  <div class="content">
+    <div class="invitation-card">
+      <img src="./Graduation Invitation -Pham_Trang_files/Graduation-Invitation.jpg" alt="Graduation Invitation">
+      <h1>Lễ Tốt Nghiệp 2025</h1>
+      <h2>Phạm Thị Minh Trang</h2>
+      <p><strong>Thứ 6, ngày 17 tháng 10 năm 2025</strong></p>
+      <p>15:00 – 18:00</p>
+      <div class="details">
+        <p><strong>Địa điểm:</strong> Hội trường C2 – Đại học Bách Khoa Hà Nội</p>
+        <p><strong>Liên hệ:</strong> 0326666397</p>
+      </div>
+      <a class="button" href="https://maps.app.goo.gl/PX898CY1WndvuC3S6" target="_blank">Xem địa điểm</a>
+    </div>
+
+    <div class="invitation-card">
+      <h2>🎉 Let’s Celebrate Together!</h2>
+      <p>Hãy đến tham gia lễ tốt nghiệp của mình nhé!</p>
+      <p>❤️ I can’t wait to see you there! ❤️</p>
+    </div>
+
+
+  </div>
+
+  <script>
+    const canvas = document.getElementById('fireworks');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    function resize() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    function createParticle() {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = Math.random() * 4 + 2;
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: canvas.height,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed * -1.2,
+        size: Math.random() * 3 + 1,
+        color: `hsl(${Math.random() * 360}, 100%, 70%)`,
+        life: 100
+      });
+    }
+
+    function updateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+        p.vy += 0.05;
+        p.life--;
+        if (p.life <= 0) particles.splice(i, 1);
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fillStyle = p.color;
+        ctx.fill();
+      });
+    }
+
+    setInterval(() => { for (let i = 0; i < 10; i++) createParticle(); }, 300);
+
+    function animate() { updateParticles(); requestAnimationFrame(animate); }
+    animate();
+  </script>
+
+<style>
+    .cap {
+      position: fixed;
+      bottom: -100px;
+      width: 60px;
+      height: auto;
+      animation-name: rise;
+      animation-timing-function: linear;
+      pointer-events: none;
+      z-index: 20; 
+    }
+    @keyframes rise {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(-360deg); opacity: 0.8; }
+    }
+  </style>
+  <script>
+    function createCap() {
+      const cap = document.createElement("img");
+      cap.src = "./mu-tot-nghiep.png"; 
+      cap.className = "cap";
+      cap.style.left = Math.random() * window.innerWidth + "px";
+      const size = 40 + Math.random() * 80;
+      cap.style.width = size + "px";
+      const duration = 3 + Math.random() * 5;
+      cap.style.animationDuration = duration + "s";
+      const rotateStart = Math.random() * 360;
+      cap.style.transform = `rotate(${rotateStart}deg)`;
+      document.body.appendChild(cap);
+      setTimeout(() => { cap.remove(); }, duration * 1000);
+    }
+    setInterval(createCap, 2000);
+  </script>
+<img src="./Graduation Invitation -Bui Tran Hoang_files/mu-tot-nghiep.png" class="cap" style="left: 17.3197px; width: 74.0917px; animation-duration: 3.82653s; transform: rotate(300.581deg);"><img src="./Graduation Invitation -Bui Tran Hoang_files/mu-tot-nghiep.png" class="cap" style="left: 53.3827px; width: 59.1769px; animation-duration: 6.01524s; transform: rotate(94.0182deg);"></body></html>
