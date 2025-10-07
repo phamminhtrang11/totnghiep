@@ -142,22 +142,20 @@
 </audio>
 
 <script>
-  function enableMusic() {
+  window.addEventListener("DOMContentLoaded", () => {
     const audio = document.getElementById("bg-music");
-    audio.muted = false;
-    audio.currentTime = 3.5; // bỏ qua 2s đầu
-    audio.play().then(() => {
-      console.log("Nhạc phát thành công");
-      // chỉ remove nếu play thành công
-      window.removeEventListener("scroll", enableMusic);
-      window.removeEventListener("click", enableMusic);
-    }).catch(err => {
-      console.log("Trình duyệt chặn phát:", err);
-    });
-  }
 
-  window.addEventListener("scroll", enableMusic);
-  window.addEventListener("click", enableMusic);
+    // Đợi 1 giây rồi bật tiếng và play
+    setTimeout(() => {
+      audio.muted = false;
+      audio.currentTime = 2; // bỏ qua 2s đầu
+      audio.play().then(() => {
+        console.log("Nhạc phát thành công!");
+      }).catch(err => {
+        console.log("Trình duyệt chặn phát:", err);
+      });
+    }, 1000);
+  });
 </script>
 
   <canvas id="fireworks" width="1440" height="765"></canvas>
