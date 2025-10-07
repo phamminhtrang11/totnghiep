@@ -141,20 +141,66 @@
   <source src="nhac.mp4" type="audio/mpeg">
 </audio>
 
-<script>
-  window.addEventListener("DOMContentLoaded", () => {
-    const audio = document.getElementById("bg-music");
+<!-- Nút bật/tắt nhạc -->
+<button id="music-toggle" title="Bật/Tắt nhạc">🔇</button>
 
-    // Đợi 1 giây rồi bật tiếng và play
-    setTimeout(() => {
+<style>
+  #music-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    cursor: pointer;
+    z-index: 999;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+  }
+
+  #music-toggle:hover {
+    transform: scale(1.1);
+    background: rgba(255, 255, 255, 0.95);
+  }
+</style>
+
+<script>
+  const audio = document.getElementById("bg-music");
+  const toggleBtn = document.getElementById("music-toggle");
+  let isPlaying = false;
+
+  function enableMusic() {
+    audio.muted = false;
+    audio.currentTime = 2; // bỏ qua 2s đầu
+    audio.play().then(() => {
+      isPlaying = true;
+      toggleBtn.textContent = "🔊";
+      console.log("Nhạc phát thành công");
+      window.removeEventListener("click", enableMusic);
+      window.removeEventListener("scroll", enableMusic);
+    }).catch(err => console.log("Bị chặn:", err));
+  }
+
+  // Khi click hoặc cuộn thì bật nhạc
+  window.addEventListener("click", enableMusic);
+  window.addEventListener("scroll", enableMusic);
+
+  // Xử lý khi bấm nút bật/tắt nhạc
+  toggleBtn.addEventListener("click", () => {
+    if (isPlaying) {
+      audio.pause();
+      isPlaying = false;
+      toggleBtn.textContent = "🔇";
+    } else {
       audio.muted = false;
-      audio.currentTime = 2; // bỏ qua 2s đầu
       audio.play().then(() => {
-        console.log("Nhạc phát thành công!");
-      }).catch(err => {
-        console.log("Trình duyệt chặn phát:", err);
-      });
-    }, 1000);
+        isPlaying = true;
+        toggleBtn.textContent = "🔊";
+      }).catch(err => console.log("Không phát được:", err));
+    }
   });
 </script>
 
