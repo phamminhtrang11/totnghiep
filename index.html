@@ -215,21 +215,7 @@
   });
 </script>
 
-  // Xử lý khi bấm nút bật/tắt nhạc
-  toggleBtn.addEventListener("click", () => {
-    if (isPlaying) {
-      audio.pause();
-      isPlaying = false;
-      toggleBtn.textContent = "🔇";
-    } else {
-      audio.muted = false;
-      audio.play().then(() => {
-        isPlaying = true;
-        toggleBtn.textContent = "🔊";
-      }).catch(err => console.log("Không phát được:", err));
-    }
-  });
-</script>
+ 
 
   <canvas id="fireworks" width="1440" height="765"></canvas>
 
